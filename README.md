@@ -8,6 +8,7 @@ https://www.danmuji.org/plugins/SendDanmaku
 
 - 弹幕姬SDK
 - 弹幕姬本体exe
+- 登录中心 [LoginCenter](https://www.danmuji.org/plugins/LoginCenter)
 - [Newtonsoft.Json v13.0.1](https://www.nuget.org/packages/Newtonsoft.Json/13.0.1)
 
 Tips:

@@ -42,6 +42,7 @@ namespace SendDanmaku
                 Log("需要安装“登录中心”才能使用");
                 return;
             }
+            MessageBox.Show("Plugin initing");
 
             hackGUI();
             Toolwindows = new SendToolwindows();
@@ -82,7 +83,8 @@ namespace SendDanmaku
 
         public override void DeInit()
         {
-            Toolwindows.Close();
+            if (Toolwindows != null)
+                Toolwindows.Close();
         }
 
         public override void Admin()
@@ -111,7 +113,7 @@ namespace SendDanmaku
         {
             MainWindow mw = (MainWindow)Application.Current.MainWindow;
             ItemsControl log = (ItemsControl)mw.FindName("Log");
-            TabItem tab = (TabItem)log.Parent;
+            ScrollViewer tab = (ScrollViewer)log.Parent;
             Grid grid = new Grid();
             RowDefinition c1 = new RowDefinition();
             c1.Height = new GridLength(1, GridUnitType.Star);
