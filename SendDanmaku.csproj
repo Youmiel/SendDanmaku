@@ -52,10 +52,8 @@
       <HintPath>..\libs\LoginCenter.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -77,22 +75,28 @@
       <SubType>Code</SubType>
     </Compile>
     <AppDesigner Include="Properties\" />
-    <Compile Include="SafeAPI.cs" />
-    <Compile Include="SendDanmakuMain.cs" />
-    <Compile Include="SendToolbar.xaml.cs">
+    <Compile Include="src\Properties\AssemblyInfo.cs" />
+    <Compile Include="src\SafeAPI.cs" />
+    <Compile Include="src\SendDanmakuMain.cs" />
+    <Compile Include="src\SendToolbar.xaml.cs">
       <DependentUpon>SendToolbar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SendToolwindows.xaml.cs">
+    <Compile Include="src\SendToolwindows.xaml.cs">
       <DependentUpon>SendToolwindows.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VersionChecker.cs" />
+    <Compile Include="src\VersionChecker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="SendToolbar.xaml">
-      <SubType>Designer</SubType>
+    <None Include="LICENSE" />
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="src\SendToolbar.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="SendToolwindows.xaml">
+    <Page Include="src\SendToolwindows.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
