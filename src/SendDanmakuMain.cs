@@ -42,9 +42,8 @@ namespace SendDanmaku
                 Log("需要安装“登录中心”才能使用");
                 return;
             }
-            MessageBox.Show("Plugin initing");
 
-            hackGUI();
+            HackGUI();
             Toolwindows = new SendToolwindows();
             Toolwindows.Hide();
         }
@@ -109,7 +108,7 @@ namespace SendDanmaku
             return;
         }
 
-        private void hackGUI()
+        private void HackGUI()
         {
             MainWindow mw = (MainWindow)Application.Current.MainWindow;
             ItemsControl log = (ItemsControl)mw.FindName("Log");
@@ -125,10 +124,10 @@ namespace SendDanmaku
             Grid.SetRow(bar, 1);
             tab.Content = grid;
             grid.Children.Add(log);
-            var i = grid.Children.Add(bar);
+            grid.Children.Add(bar);
         }
 
-        internal static void log(string text)
+        internal static void LogMsg(string text)
         {
             self.Log(text);
         }

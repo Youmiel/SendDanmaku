@@ -23,7 +23,7 @@
                 <TextBlock FontSize="18" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">发送弹幕：</TextBlock>
             </Border>
             <Border Grid.Column="1"  BorderBrush="{x:Null}" Height="Auto">
-                <TextBox Height="22" VerticalAlignment="Center" x:Name="input" AcceptsReturn="True" TextChanged="input_TextChanged" KeyUp="input_KeyUp" IsEnabled="False" FontSize="14" AutomationProperties.HelpText="请输入弹幕 DA☆ZE～" MaxLength="0" />
+                <TextBox Height="22" VerticalAlignment="Center" x:Name="Input" AcceptsReturn="True" TextChanged="Input_TextChanged" KeyUp="Input_KeyUp" IsEnabled="False" FontSize="14" AutomationProperties.HelpText="请输入弹幕 DA☆ZE～" MaxLength="0" />
             </Border>
             <Border Grid.Column="2"  BorderBrush="{x:Null}" Height="Auto" Margin="3.2,0,3,0">
                 <TextBlock Margin="0,6,0.036,5.182" VerticalAlignment="Center">

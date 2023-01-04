@@ -22,7 +22,7 @@ namespace SendDanmaku
                     var versionChecker = new VersionChecker("SendDanmaku");
                     if(versionChecker.FetchInfo())
                     {
-                        if(versionChecker.hasNewVersion(plugin.PluginVer))
+                        if(versionChecker.HasNewVersion(plugin.PluginVer))
                         {
                             plugin.Log("插件有新版本了！最新版本：" + versionChecker.Version + "，当前版本" + plugin.PluginVer +
                             "，更新时间：" + versionChecker.UpdateTime.ToString("yyyy.MM.dd") + "\r\n" + "下载地址：" + versionChecker.WebPageUrl);
@@ -30,7 +30,7 @@ namespace SendDanmaku
                     }
                     else
                     {
-                        plugin.Log("版本检查失败：" + versionChecker.lastException.Message);
+                        plugin.Log("版本检查失败：" + versionChecker.LastException.Message);
                     }
 
                 }
@@ -65,7 +65,7 @@ namespace SendDanmaku
         /// <summary>
         /// 最后一个出错的Exception
         /// </summary>
-        public Exception lastException { get; private set; } = null;
+        public Exception LastException { get; private set; } = null;
 
         /// <summary>
         /// 插件ID
@@ -149,7 +149,7 @@ namespace SendDanmaku
                 JObject j = JObject.Parse(json);
 
                 if(j["id"].ToString() != this.Id)
-                { lastException = new Exception("API返回ID不正确"); return false; }
+                { LastException = new Exception("API返回ID不正确"); return false; }
                 else
                 {
                     this.Name = j["name"].ToString();
@@ -166,7 +166,7 @@ namespace SendDanmaku
                 }
             }
             catch(Exception ex)
-            { lastException = ex; return false; }
+            { LastException = ex; return false; }
 
         }
 
@@ -175,15 +175,15 @@ namespace SendDanmaku
         /// </summary>
         /// <param name="version">当前版本号</param>
         /// <returns>检查结果</returns>
-        public bool hasNewVersion(string version)
-        { return hasNewVersion(new Version(version)); }
+        public bool HasNewVersion(string version)
+        { return HasNewVersion(new Version(version)); }
 
         /// <summary>
         /// 检查是否具有更新的版本
         /// </summary>
         /// <param name="version">当前版本号</param>
         /// <returns>检查结果</returns>
-        public bool hasNewVersion(Version version)
+        public bool HasNewVersion(Version version)
         { return (version.CompareTo(this.Version) < 0); }
         // version对象比参数小（之前，older的版本）
 

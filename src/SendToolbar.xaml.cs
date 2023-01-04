@@ -26,20 +26,20 @@ namespace SendDanmaku
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {// 打开设置窗
-            var result = await SendDanmakuMain.api.doAuth(SendDanmakuMain.self);
+            var result = await SendDanmakuMain.api.DoAuth(SendDanmakuMain.self);
             switch (result)
             {
                 case AuthorizationResult.Success:
-                    SendDanmakuMain.log("插件已经被允许使用B站账号！");
+                    SendDanmakuMain.LogMsg("插件已经被允许使用B站账号！");
                     break;
                 case AuthorizationResult.Failure:
-                    SendDanmakuMain.log("授权失败，用户拒绝");
+                    SendDanmakuMain.LogMsg("授权失败，用户拒绝");
                     break;
                 case AuthorizationResult.Disabled:
-                    SendDanmakuMain.log("权限被禁用，请到“登录中心”插件启用授权");
+                    SendDanmakuMain.LogMsg("权限被禁用，请到“登录中心”插件启用授权");
                     break;
                 case AuthorizationResult.Timeout:
-                    SendDanmakuMain.log("授权失败，用户未操作超时");
+                    SendDanmakuMain.LogMsg("授权失败，用户未操作超时");
                     break;
                 case AuthorizationResult.Illegal:
                 case AuthorizationResult.Duplicate:
@@ -48,14 +48,14 @@ namespace SendDanmaku
             }
         }
 
-        private void input_KeyUp(object sender, KeyEventArgs e)
+        private void Input_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Up)
             {// 翻更老的一条记录
                 history += 1;
                 if (history > list.Count)
                     history = list.Count;
-                input.Text = list[list.Count - history];
+                Input.Text = list[list.Count - history];
             }
             else if (e.Key == Key.Down)
             {
@@ -63,9 +63,9 @@ namespace SendDanmaku
                 if (history < 0)
                     history = 0;
                 if (history == 0)
-                    input.Text = string.Empty;
+                    Input.Text = string.Empty;
                 else
-                    input.Text = list[list.Count - history];
+                    Input.Text = list[list.Count - history];
             }
         }
 
@@ -81,23 +81,23 @@ namespace SendDanmaku
 
         private int history = 0;
         private List<string> list = new List<string>();
-        private void add2List(string text)
+        private void Add2List(string text)
         {
             while (list.Count >= 10)
                 list.RemoveAt(0);
             list.Add(text);
         }
 
-        private async void input_TextChanged(object sender, TextChangedEventArgs e)
+        private async void Input_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                if (input.Text.Contains("\n"))
+                if (Input.Text.Contains("\n"))
                 {
-                    string text = input.Text.Replace("\r", string.Empty).Replace("\n", string.Empty);
-                    input.Text = string.Empty;
+                    string text = Input.Text.Replace("\r", string.Empty).Replace("\n", string.Empty);
+                    Input.Text = string.Empty;
                     history = 0;
-                    add2List(text);
+                    Add2List(text);
                     string result = null;
                     try
                     {
@@ -109,18 +109,18 @@ namespace SendDanmaku
                         }
                         else
                         {
-                            SendDanmakuMain.log("还未连接直播间！");
+                            SendDanmakuMain.LogMsg("还未连接直播间！");
                             return;
                         }
                     }
                     catch (PluginNotAuthorizedException)
                     {
-                        SendDanmakuMain.log("插件未被授权使用B站账号");
+                        SendDanmakuMain.LogMsg("插件未被授权使用B站账号");
                         return;
                     }
                     if (result == null)
                     {
-                        SendDanmakuMain.log("网络错误，请重试");
+                        SendDanmakuMain.LogMsg("网络错误，请重试");
                     }
                     else
                     {
@@ -128,14 +128,14 @@ namespace SendDanmaku
                         string msg = (j["msg"] ?? j["message"]).ToString();
                         if (msg != string.Empty)
                         {
-                            SendDanmakuMain.log("服务器返回：" + msg);
+                            SendDanmakuMain.LogMsg("服务器返回：" + msg);
                         }
                     }
                 }
             }
             finally
             {// 统计弹幕字数
-                text_count.Text = input.Text.Length.ToString();
+                text_count.Text = Input.Text.Length.ToString();
             }
         }
 
