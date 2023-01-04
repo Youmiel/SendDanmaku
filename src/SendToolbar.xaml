@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SendDanmaku"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="585">
-    <Border Height="Auto" BorderBrush="Black" BorderThickness="1">
+             d:DesignHeight="34" d:DesignWidth="585">
+    <Border BorderBrush="Black" BorderThickness="1">
         <Grid Margin="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -19,7 +19,7 @@
                 <TextBlock FontSize="18" VerticalAlignment="Center">发送弹幕：</TextBlock>
             </Border>
             <Border Grid.Column="1"  BorderBrush="{x:Null}" Height="Auto">
-                <TextBox Height="20" VerticalAlignment="Center" x:Name="Input" AcceptsReturn="True" TextChanged="input_TextChanged" KeyUp="input_KeyUp"></TextBox>
+                <TextBox x:Name="Input" AcceptsReturn="True" TextChanged="Input_TextChanged" KeyUp="Input_KeyUp" Margin="0,2,0,2" VerticalContentAlignment="Center" Height="24" VerticalAlignment="Center"/>
             </Border>
             <Border Grid.Column="2"  BorderBrush="{x:Null}" Height="Auto" Margin="5 0">
                 <TextBlock VerticalAlignment="Center">
